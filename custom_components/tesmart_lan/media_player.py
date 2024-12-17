@@ -171,6 +171,7 @@ class TesmartLan(MediaPlayerEntity):
             while len(response) < 6:
                 response.extend(s.recv(6 - len(response)))
                 _LOGGER.debug(f"{self.host}:{self.port} responded with {response}")
+            _LOGGER.info(f"Setting Active Port to {self.source_list[response[4]]}")
             self.active_port = self.source_list[response[4]]
 
         except Exception:
